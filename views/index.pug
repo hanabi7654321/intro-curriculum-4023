@@ -4,12 +4,13 @@ block content
   div.jumbotron.my-3
     h1.display-4 予定調整くん
     p.lead 予定調整くんは、GitHubで認証でき、予定を作って出欠が取れるサービスです
-  if user
+  if user   
+      
     div
       a(href="/schedules/new").btn.btn-info 予定を作る
     - var hasSchedule = schedules.length > 0
     if hasSchedule
-      h3.my-3 あなたの作った予定一覧
+      h3.my-3 #{user.username}さんの作った予定一覧
       table.table
         tr
           th 予定名
@@ -19,3 +20,8 @@ block content
             td
               a(href=`/schedules/${schedule.scheduleId}`) #{schedule.scheduleName}
             td #{schedule.formattedUpdatedAt}
+  
+  - var greeting = ['元気ですか？', '今日はいい天気ですね', 'お疲れさまです！']
+  - var randomNum = Math.floor((Math.random() * greeting.length)) 
+  greeting(randomNum)
+

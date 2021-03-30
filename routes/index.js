@@ -20,6 +20,7 @@ router.get('/', (req, res, next) => {
       res.render('index', {
         title: title,
         user: req.user,
+        username: req.user.name,
         schedules: schedules
       });
     });
